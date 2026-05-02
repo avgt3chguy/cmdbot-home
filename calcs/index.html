@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Online Calculators — Calc. by CommandBot</title>
+  <meta name="description" content="Free online calculators for finance, health, maths and unit conversion. GST, BMI, loan repayments, percentages, compound interest and more — instant results as you type.">
+  <meta name="keywords" content="online calculator, GST calculator, BMI calculator, percentage calculator, loan calculator, compound interest, unit converter, free calculator">
+  <link rel="canonical" href="https://calcs.cmdbot.xyz/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%235b6af0'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>%3D</text></svg>">
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2695796727312656" crossorigin="anonymous"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Calc. by CommandBot",
+    "url": "https://calcs.cmdbot.xyz",
+    "description": "Free online calculators for finance, health, maths and unit conversion.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://calcs.cmdbot.xyz/#search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0b0f;
+      --surface: #12141c;
+      --surface-2: #1a1d27;
+      --surface-3: #20233200;
+      --border: #252836;
+      --border-focus: rgba(91,106,240,0.5);
+      --text: #e8eaf0;
+      --text-muted: #7c8399;
+      --text-dim: #4a4f66;
+      --accent: #5b6af0;
+      --accent-hover: #6b7af8;
+      --accent-glow: rgba(91,106,240,0.15);
+      --green: #22c55e;
+      --green-glow: rgba(34,197,94,0.12);
+      --orange: #f59e0b;
+      --red: #ef4444;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --radius-xs: 5px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 11, 15, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo { font-size: 1rem; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: -0.03em; white-space: nowrap; }
+    .logo span { color: var(--accent); }
+    .logo sub { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); vertical-align: baseline; margin-left: 2px; }
+
+    .nav-cats {
+      display: flex;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+    .nav-cat {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-cat:hover { color: var(--text); background: var(--surface-2); }
+    .nav-cat.active { color: var(--accent); background: var(--accent-glow); }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    .hero-kicker { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; }
+    .hero h1 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1rem; }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero p { font-size: 1rem; color: var(--text-muted); max-width: 520px; margin: 0 auto 2rem; line-height: 1.7; }
+
+    .cat-pills {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+    .cat-pill {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-decoration: none;
+    }
+    .cat-pill:hover { border-color: var(--accent); color: var(--accent); }
+    .cat-pill.active { background: var(--accent-glow); border-color: var(--accent); color: var(--accent); }
+
+    /* ── Ad slot ── */
+    .ad-banner {
+      max-width: 1080px;
+      margin: 0 auto 2rem;
+      padding: 0 1.5rem;
+    }
+    .ad-inner {
+      background: rgba(255,255,255,0.02);
+      border: 1px dashed rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* ── Main layout ── */
+    .main-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+      flex: 1;
+    }
+
+    /* ── Section headers ── */
+    .cat-section { margin-bottom: 4rem; }
+    .cat-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cat-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(91,106,240,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+    .cat-header h2 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
+    .cat-header p { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+    /* ── Calculator cards ── */
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .calc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .calc-card:hover {
+      border-color: rgba(91,106,240,0.3);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .calc-card-head {
+      padding: 1.25rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .calc-card-head h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem; letter-spacing: -0.02em; }
+    .calc-card-head p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+
+    .calc-body { padding: 1.25rem 1.5rem 1.5rem; }
+
+    .field { margin-bottom: 0.9rem; }
+    .field label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.35rem;
+    }
+
+    .input-wrap { position: relative; }
+    .input-prefix, .input-suffix {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      pointer-events: none;
+    }
+    .input-prefix { left: 0.75rem; }
+    .input-suffix { right: 0.75rem; }
+
+    input[type="number"], input[type="text"], select {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.925rem;
+      padding: 0.6rem 0.85rem;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      appearance: none;
+      -moz-appearance: textfield;
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+    input:focus, select:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .has-prefix input { padding-left: 2rem; }
+    .has-suffix input { padding-right: 2.5rem; }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%237c8399' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      padding-right: 2.25rem;
+      cursor: pointer;
+    }
+
+    .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+    .result-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .result-label { font-size: 0.7rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.35rem; }
+    .result-value { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; color: var(--green); }
+    .result-value.neutral { color: var(--text); }
+    .result-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem; }
+
+    .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
+    .result-cell {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+    }
+    .result-cell .result-label { margin-bottom: 0.2rem; }
+    .result-cell .result-value { font-size: 1.15rem; }
+
+    .formula-note {
+      font-size: 0.73rem;
+      color: var(--text-dim);
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border);
+      line-height: 1.5;
+    }
+    .formula-note code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      background: var(--surface-2);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      color: var(--accent);
+    }
+
+    /* ── Unit converter specific ── */
+    .converter-wrap { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.75rem; align-items: end; }
+    .converter-arrow { font-size: 1.1rem; color: var(--text-dim); padding-bottom: 0.6rem; text-align: center; }
+
+    /* ── Info section (SEO content) ── */
+    .info-section {
+      max-width: 1080px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .info-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .info-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--text-muted); }
+    footer p { font-size: 0.75rem; color: var(--text-dim); }
+    .coffee-btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.45rem 1rem; background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.25); border-radius:8px; color:#f59e0b; font-size:0.8rem; font-weight:600; text-decoration:none; transition: all 0.15s; }
+    .coffee-btn:hover { background:rgba(245,158,11,0.15); border-color:rgba(245,158,11,0.5); }
+
+    /* ── Privacy / About ── */
+    .text-page { display: none; max-width: 720px; margin: 0 auto; padding: 0 1.5rem 5rem; }
+    .text-page.visible { display: block; }
+    .text-page h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+    .text-page .lead { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem; }
+    .text-page h2 { font-size: 1.05rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.6rem; }
+    .text-page p, .text-page li { font-size: 0.875rem; color: var(--text-muted); line-height: 1.75; }
+    .text-page ul { padding-left: 1.25rem; margin-top: 0.5rem; }
+    .text-page li { margin-bottom: 0.35rem; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .nav-cats { display: none; }
+      .row-2 { grid-template-columns: 1fr; }
+      .result-grid { grid-template-columns: 1fr; }
+      .converter-wrap { grid-template-columns: 1fr; }
+      .converter-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="https://cmdbot.xyz" class="logo">Command<span>Bot</span> <sub>Calc.</sub></a>
+    <div class="nav-cats">
+      <a href="#finance" class="nav-cat" data-cat="finance">Finance</a>
+      <a href="#health" class="nav-cat" data-cat="health">Health</a>
+      <a href="#maths" class="nav-cat" data-cat="maths">Maths</a>
+      <a href="#converters" class="nav-cat" data-cat="converters">Converters</a>
+      <a href="#" class="nav-cat" data-page="about" onclick="showPage('about');return false;">About</a>
+      <a href="#" class="nav-cat" data-page="privacy" onclick="showPage('privacy');return false;">Privacy</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <p class="hero-kicker">Free · Instant · No signup</p>
+  <h1>The <em>calculator</em> for everything</h1>
+  <p>Finance, health, maths and unit conversion — over 15 free tools that give you instant results as you type. No ads in results, no paywalls.</p>
+  <div class="cat-pills">
+    <a href="#finance" class="cat-pill" onclick="filterCat('finance')">💰 Finance</a>
+    <a href="#health" class="cat-pill" onclick="filterCat('health')">❤️ Health</a>
+    <a href="#maths" class="cat-pill" onclick="filterCat('maths')">📐 Maths</a>
+    <a href="#converters" class="cat-pill" onclick="filterCat('converters')">⚡ Converters</a>
+  </div>
+</section>
+
+<!-- ── AD ── -->
+<div class="ad-banner">
+  <div class="ad-inner">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-2695796727312656" data-ad-slot="CALC-BANNER-TOP" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="main-wrap" id="calculators">
+
+  <!-- ══ FINANCE ══ -->
+  <div class="cat-section" id="finance">
+    <div class="cat-header">
+      <div class="cat-icon">💰</div>
+      <div>
+        <h2>Finance Calculators</h2>
+        <p>GST, percentages, loans, interest and more</p>
+      </div>
+    </div>
+    <div class="calc-grid">
+
+      <!-- GST Calculator -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>GST Calculator</h3>
+          <p>Add or remove 10% GST from any amount. Essential for Australian businesses, contractors and sole traders when preparing quotes or invoices.</p>
+        </div>
+        <div class="calc-body">
+          <div class="field">
+            <label>Amount ($)</label>
+            <div class="input-wrap has-prefix">
+              <span class="input-prefix">$</span>
+              <input type="number" id="gst-amount" placeholder="0.00" min="0" step="0.01" oninput="calcGST()">
+            </div>
+          </div>
+          <div class="field">
+            <label>Calculation type</label>
+            <select id="gst-type" onchange="calcGST()">
+              <option value="add">Add GST (ex-GST → inc-GST)</option>
+              <option value="remove">Remove GST (inc-GST → ex-GST)</option>
+            </select>
+          </div>
+          <div class="result-grid">
+            <div class="result-cell">
+              <div class="result-label">GST Amount</div>
+              <div class="result-value" id="gst-tax">$0.00</div>
+            </div>
+            <div class="result-cell">
+              <div class="result-label">Total Amount</div>
+              <div class="result-value" id="gst-total">$0.00</div>
+            </div>
+          </div>
+          <p class="formula-note">GST rate in Australia is 10%. To add: <code>total = amount × 1.1</code>. To remove: <code>ex-GST = total ÷ 1.1</code>.</p>
+        </div>
+      </div>
+
+      <!-- Percentage Calculator -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Percentage Calculator</h3>
+          <p>Calculate what percentage one number is of another, find percentage increases/decreases, or work out X% of a value quickly.</p>
+        </div>
+        <div class="calc-body">
+          <div class="field">
+            <label>Mode</label>
+            <select id="pct-mode" onchange="calcPct()">
+              <option value="of">X% of Y</option>
+              <option value="what">X is what % of Y?</option>
+              <option value="change">% change from X to Y</option>
+            </select>
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label id="pct-label-a">Percentage (%)</label>
+              <div class="input-wrap has-suffix">
+                <input type="number" id="pct-a" placeholder="0" oninput="calcPct()">
+                <span class="input-suffix" id="pct-suffix-a">%</span>
+              </div>
+            </div>
+            <div class="field">
+              <label id="pct-label-b">Value</label>
+              <input type="number" id="pct-b" placeholder="0" oninput="calcPct()">
+            </div>
+          </div>
+          <div class="result-box">
+            <div class="result-label">Result</div>
+            <div class="result-value neutral" id="pct-result">—</div>
+          </div>
+          <p class="formula-note" id="pct-formula">Formula: <code>result = (X / 100) × Y</code></p>
+        </div>
+      </div>
+
+      <!-- Loan Repayment -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Loan Repayment Calculator</h3>
+          <p>Work out your monthly repayments on a personal loan, car loan or mortgage. Includes total interest paid over the life of the loan.</p>
+        </div>
+        <div class="calc-body">
+          <div class="field">
+            <label>Loan Amount ($)</label>
+            <div class="input-wrap has-prefix">
+              <span class="input-prefix">$</span>
+              <input type="number" id="loan-amount" placeholder="20000" min="0" oninput="calcLoan()">
+            </div>
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label>Annual Interest (%)</label>
+              <div class="input-wrap has-suffix">
+                <input type="number" id="loan-rate" placeholder="6.5" min="0" step="0.01" oninput="calcLoan()">
+                <span class="input-suffix">%</span>
+              </div>
+            </div>
+            <div class="field">
+              <label>Term (years)</label>
+              <input type="number" id="loan-years" placeholder="5" min="1" max="50" oninput="calcLoan()">
+            </div>
+          </div>
+          <div class="result-grid">
+            <div class="result-cell">
+              <div class="result-label">Monthly Payment</div>
+              <div class="result-value" id="loan-monthly">$0</div>
+            </div>
+            <div class="result-cell">
+              <div class="result-label">Total Interest</div>
+              <div class="result-value" style="color:var(--orange)" id="loan-interest">$0</div>
+            </div>
+          </div>
+          <div class="result-box" style="margin-top:0.75rem">
+            <div class="result-label">Total Repaid</div>
+            <div class="result-value neutral" id="loan-total">$0</div>
+          </div>
+          <p class="formula-note">Uses standard amortisation formula: <code>M = P[r(1+r)ⁿ]/[(1+r)ⁿ-1]</code> where r = monthly rate.</p>
+        </div>
+      </div>
+
+      <!-- Compound Interest -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Compound Interest Calculator</h3>
+          <p>See how your savings or investments grow over time with the power of compounding. Compare different compounding frequencies.</p>
+        </div>
+        <div class="calc-body">
+          <div class="row-2">
+            <div class="field">
+              <label>Principal ($)</label>
+              <div class="input-wrap has-prefix">
+                <span class="input-prefix">$</span>
+                <input type="number" id="ci-principal" placeholder="10000" oninput="calcCI()">
+              </div>
+            </div>
+            <div class="field">
+              <label>Annual Rate (%)</label>
+              <div class="input-wrap has-suffix">
+                <input type="number" id="ci-rate" placeholder="5" step="0.01" oninput="calcCI()">
+                <span class="input-suffix">%</span>
+              </div>
+            </div>
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label>Years</label>
+              <input type="number" id="ci-years" placeholder="10" min="1" oninput="calcCI()">
+            </div>
+            <div class="field">
+              <label>Compounded</label>
+              <select id="ci-freq" onchange="calcCI()">
+                <option value="12">Monthly</option>
+                <option value="4">Quarterly</option>
+                <option value="2">Half-yearly</option>
+                <option value="1">Annually</option>
+                <option value="365">Daily</option>
+              </select>
+            </div>
+          </div>
+          <div class="result-grid">
+            <div class="result-cell">
+              <div class="result-label">Final Balance</div>
+              <div class="result-value" id="ci-total">$0</div>
+            </div>
+            <div class="result-cell">
+              <div class="result-label">Interest Earned</div>
+              <div class="result-value" id="ci-earned">$0</div>
+            </div>
+          </div>
+          <p class="formula-note">Formula: <code>A = P(1 + r/n)^(nt)</code> where n = compounding periods per year.</p>
+        </div>
+      </div>
+
+      <!-- Tip Calculator -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Tip Calculator</h3>
+          <p>Calculate a tip on a restaurant bill or service fee and split it evenly between multiple people.</p>
+        </div>
+        <div class="calc-body">
+          <div class="row-2">
+            <div class="field">
+              <label>Bill Amount ($)</label>
+              <div class="input-wrap has-prefix">
+                <span class="input-prefix">$</span>
+                <input type="number" id="tip-bill" placeholder="85.00" oninput="calcTip()">
+              </div>
+            </div>
+            <div class="field">
+              <label>Tip (%)</label>
+              <div class="input-wrap has-suffix">
+                <input type="number" id="tip-pct" placeholder="15" oninput="calcTip()">
+                <span class="input-suffix">%</span>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Split between (people)</label>
+            <input type="number" id="tip-people" placeholder="2" min="1" value="1" oninput="calcTip()">
+          </div>
+          <div class="result-grid">
+            <div class="result-cell">
+              <div class="result-label">Tip Amount</div>
+              <div class="result-value" id="tip-amount">$0</div>
+            </div>
+            <div class="result-cell">
+              <div class="result-label">Total Bill</div>
+              <div class="result-value neutral" id="tip-total">$0</div>
+            </div>
+          </div>
+          <div class="result-box" style="margin-top:0.75rem">
+            <div class="result-label">Per Person</div>
+            <div class="result-value" id="tip-per">$0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Discount Calculator -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Discount / Sale Price Calculator</h3>
+          <p>Find out how much you save in a sale, or work backwards from a sale price to find the original price and discount percentage.</p>
+        </div>
+        <div class="calc-body">
+          <div class="field">
+            <label>Mode</label>
+            <select id="disc-mode" onchange="calcDiscount()">
+              <option value="from-pct">Original price + discount % → sale price</option>
+              <option value="from-sale">Original + sale price → discount %</option>
+            </select>
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label>Original Price ($)</label>
+              <div class="input-wrap has-prefix">
+                <span class="input-prefix">$</span>
+                <input type="number" id="disc-original" placeholder="120" oninput="calcDiscount()">
+              </div>
+            </div>
+            <div class="field">
+              <label id="disc-b-label">Discount (%)</label>
+              <div class="input-wrap has-suffix">
+                <input type="number" id="disc-b" placeholder="20" oninput="calcDiscount()">
+                <span class="input-suffix" id="disc-b-suffix">%</span>
+              </div>
+            </div>
+          </div>
+          <div class="result-grid">
+            <div class="result-cell">
+              <div class="result-label">You Save</div>
+              <div class="result-value" id="disc-saving">$0</div>
+            </div>
+            <div class="result-cell">
+              <div class="result-label" id="disc-result-label">Sale Price</div>
+              <div class="result-value neutral" id="disc-result">$0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ HEALTH ══ -->
+  <div class="cat-section" id="health">
+    <div class="cat-header">
+      <div class="cat-icon">❤️</div>
+      <div>
+        <h2>Health Calculators</h2>
+        <p>BMI, calories, age and ideal weight</p>
+      </div>
+    </div>
+    <div class="calc-grid">
+
+      <!-- BMI -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>BMI Calculator</h3>
+          <p>Body Mass Index (BMI) is a measure of body fat based on height and weight. It's a widely used screening tool to identify weight categories that may lead to health problems.</p>
+        </div>
+        <div class="calc-body">
+          <div class="field">
+            <label>Units</label>
+            <select id="bmi-units" onchange="calcBMI()">
+              <option value="metric">Metric (cm / kg)</option>
+              <option value="imperial">Imperial (ft+in / lb)</option>
+            </select>
+          </div>
+          <div class="row-2" id="bmi-metric-fields">
+            <div class="field">
+              <label>Height (cm)</label>
+              <div class="input-wrap has-suffix">
+                <input type="number" id="bmi-height-cm" placeholder="175" oninput="calcBMI()">
+                <span class="input-suffix">cm</span>
+              </div>
+            </div>
+            <div class="field">
+              <label>Weight (kg)</label>
+              <div class="input-wrap has-suffix">
+                <input type="number" id="bmi-weight-kg" placeholder="75" oninput="calcBMI()">
+                <span class="input-suffix">kg</span>
+              </div>
+            </div>
+          </div>
+          <div class="row-2" id="bmi-imperial-fields" style="display:none">
+            <div class="field">
+              <label>Height (ft)</label>
+              <input type="number" id="bmi-height-ft" placeholder="5" oninput="calcBMI()">
+            </div>
+            <div class="field">
+              <label>Height (in)</label>
+              <input type="number" id="bmi-height-in" placeholder="9" oninput="calcBMI()">
+            </div>
+          </div>
+          <div class="field" id="bmi-imperial-weight" style="display:none">
+            <label>Weight (lbs)</label>
+            <input type="number" id="bmi-weight-lb" placeholder="165" oninput="calcBMI()">
+          </div>
+          <div class="result-box">
+            <div class="result-label">Your BMI</div>
+            <div class="result-value neutral" id="bmi-result">—</div>
+            <div class="result-sub" id="bmi-category"></div>
+          </div>
+          <p class="formula-note">Formula (metric): <code>BMI = weight(kg) ÷ height(m)²</code>. Categories: Underweight &lt;18.5, Normal 18.5–24.9, Overweight 25–29.9, Obese ≥30.</p>
+        </div>
+      </div>
+
+      <!-- TDEE / Calories -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Daily Calorie Calculator (TDEE)</h3>
+          <p>Estimates your Total Daily Energy Expenditure — the number of calories you burn each day based on your age, gender, weight, height and activity level.</p>
+        </div>
+        <div class="calc-body">
+          <div class="row-2">
+            <div class="field">
+              <label>Age</label>
+              <input type="number" id="cal-age" placeholder="30" min="15" max="100" oninput="calcTDEE()">
+            </div>
+            <div class="field">
+              <label>Gender</label>
+              <select id="cal-gender" onchange="calcTDEE()">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label>Height (cm)</label>
+              <input type="number" id="cal-height" placeholder="175" oninput="calcTDEE()">
+            </div>
+            <div class="field">
+              <label>Weight (kg)</label>
+              <input type="number" id="cal-weight" placeholder="75" oninput="calcTDEE()">
+            </div>
+          </div>
+          <div class="field">
+            <label>Activity Level</label>
+            <select id="cal-activity" onchange="calcTDEE()">
+              <option value="1.2">Sedentary (desk job, no exercise)</option>
+              <option value="1.375">Light (1–3 days/week)</option>
+              <option value="1.55" selected>Moderate (3–5 days/week)</option>
+              <option value="1.725">Active (6–7 days/week)</option>
+              <option value="1.9">Very active (athlete / physical job)</option>
+            </select>
+          </div>
+          <div class="result-grid">
+            <div class="result-cell">
+              <div class="result-label">Maintain Weight</div>
+              <div class="result-value" id="tdee-maintain">—</div>
+            </div>
+            <div class="result-cell">
+              <div class="result-label">Lose 0.5kg/wk</div>
+              <div class="result-value" style="color:var(--orange)" id="tdee-lose">—</div>
+            </div>
+          </div>
+          <p class="formula-note">Uses the Mifflin-St Jeor equation × activity multiplier. Results are estimates; individual metabolism varies.</p>
+        </div>
+      </div>
+
+      <!-- Age Calculator -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Age Calculator</h3>
+          <p>Calculate your exact age in years, months and days, or find out how many days until your next birthday.</p>
+        </div>
+        <div class="calc-body">
+          <div class="field">
+            <label>Date of Birth</label>
+            <input type="text" id="age-dob" placeholder="DD/MM/YYYY" oninput="calcAge()" maxlength="10">
+          </div>
+          <div class="field">
+            <label>As of date (leave blank for today)</label>
+            <input type="text" id="age-asof" placeholder="DD/MM/YYYY" oninput="calcAge()" maxlength="10">
+          </div>
+          <div class="result-box">
+            <div class="result-label">Your Age</div>
+            <div class="result-value neutral" id="age-result">—</div>
+            <div class="result-sub" id="age-sub"></div>
+          </div>
+          <p class="formula-note">Enter dates as DD/MM/YYYY (e.g. 15/03/1990). Days until next birthday are also shown.</p>
+        </div>
+      </div>
+
+      <!-- Ideal Weight -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Ideal Body Weight Calculator</h3>
+          <p>Estimate ideal body weight ranges using the Hamwi, Devine, and Robinson formulas. These are guidelines — healthy weight varies by body composition.</p>
+        </div>
+        <div class="calc-body">
+          <div class="row-2">
+            <div class="field">
+              <label>Height (cm)</label>
+              <input type="number" id="ibw-height" placeholder="170" oninput="calcIBW()">
+            </div>
+            <div class="field">
+              <label>Gender</label>
+              <select id="ibw-gender" onchange="calcIBW()">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+          </div>
+          <div class="result-grid">
+            <div class="result-cell">
+              <div class="result-label">Hamwi</div>
+              <div class="result-value neutral" id="ibw-hamwi">—</div>
+            </div>
+            <div class="result-cell">
+              <div class="result-label">Devine</div>
+              <div class="result-value neutral" id="ibw-devine">—</div>
+            </div>
+          </div>
+          <div class="result-box" style="margin-top:0.75rem">
+            <div class="result-label">Healthy BMI range (18.5–24.9)</div>
+            <div class="result-value neutral" id="ibw-bmi-range">—</div>
+          </div>
+          <p class="formula-note">Hamwi (male): <code>48 + 2.7×(in above 5ft)</code>. All values in kg. These are clinical estimates, not prescriptions.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ MATHS ══ -->
+  <div class="cat-section" id="maths">
+    <div class="cat-header">
+      <div class="cat-icon">📐</div>
+      <div>
+        <h2>Maths Calculators</h2>
+        <p>Fractions, algebra, geometry and more</p>
+      </div>
+    </div>
+    <div class="calc-grid">
+
+      <!-- Fraction Calculator -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Fraction Calculator</h3>
+          <p>Add, subtract, multiply or divide two fractions. Results are automatically simplified to the lowest terms.</p>
+        </div>
+        <div class="calc-body">
+          <div class="field">
+            <label>Operation</label>
+            <select id="frac-op" onchange="calcFraction()">
+              <option value="add">Add (+)</option>
+              <option value="sub">Subtract (−)</option>
+              <option value="mul">Multiply (×)</option>
+              <option value="div">Divide (÷)</option>
+            </select>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:0.5rem;align-items:center">
+            <div>
+              <div class="row-2">
+                <div class="field"><label>Numerator</label><input type="number" id="f1n" placeholder="1" oninput="calcFraction()"></div>
+                <div class="field"><label>Denominator</label><input type="number" id="f1d" placeholder="2" oninput="calcFraction()"></div>
+              </div>
+            </div>
+            <div style="text-align:center;font-size:1.3rem;font-weight:800;color:var(--text-muted);padding-top:1.2rem" id="frac-op-display">+</div>
+            <div>
+              <div class="row-2">
+                <div class="field"><label>Numerator</label><input type="number" id="f2n" placeholder="1" oninput="calcFraction()"></div>
+                <div class="field"><label>Denominator</label><input type="number" id="f2d" placeholder="3" oninput="calcFraction()"></div>
+              </div>
+            </div>
+          </div>
+          <div class="result-box">
+            <div class="result-label">Result</div>
+            <div class="result-value neutral" id="frac-result">—</div>
+            <div class="result-sub" id="frac-decimal"></div>
+          </div>
+          <p class="formula-note">Results are reduced using the greatest common divisor (GCD).</p>
+        </div>
+      </div>
+
+      <!-- Quadratic Solver -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Quadratic Equation Solver</h3>
+          <p>Solve any quadratic equation of the form ax² + bx + c = 0 using the quadratic formula. Shows real and complex roots.</p>
+        </div>
+        <div class="calc-body">
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.85rem">Enter coefficients for <strong style="color:var(--text)">ax² + bx + c = 0</strong></p>
+          <div class="row-2">
+            <div class="field">
+              <label>a (x² coefficient)</label>
+              <input type="number" id="quad-a" placeholder="1" oninput="calcQuad()">
+            </div>
+            <div class="field">
+              <label>b (x coefficient)</label>
+              <input type="number" id="quad-b" placeholder="-5" oninput="calcQuad()">
+            </div>
+          </div>
+          <div class="field">
+            <label>c (constant)</label>
+            <input type="number" id="quad-c" placeholder="6" oninput="calcQuad()">
+          </div>
+          <div class="result-box">
+            <div class="result-label">Solutions</div>
+            <div class="result-value neutral" id="quad-result">—</div>
+            <div class="result-sub" id="quad-discriminant"></div>
+          </div>
+          <p class="formula-note">Formula: <code>x = (-b ± √(b²-4ac)) / 2a</code>. Discriminant &gt;0: two real roots; =0: one root; &lt;0: complex roots.</p>
+        </div>
+      </div>
+
+      <!-- Area Calculator -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Area &amp; Perimeter Calculator</h3>
+          <p>Calculate the area and perimeter of common 2D shapes: circle, rectangle, triangle and trapezoid.</p>
+        </div>
+        <div class="calc-body">
+          <div class="field">
+            <label>Shape</label>
+            <select id="area-shape" onchange="renderAreaFields()">
+              <option value="circle">Circle</option>
+              <option value="rectangle">Rectangle</option>
+              <option value="triangle">Triangle (base & height)</option>
+              <option value="trapezoid">Trapezoid</option>
+            </select>
+          </div>
+          <div id="area-fields"></div>
+          <div class="result-grid" id="area-result-grid" style="display:none">
+            <div class="result-cell">
+              <div class="result-label">Area</div>
+              <div class="result-value neutral" id="area-result">—</div>
+            </div>
+            <div class="result-cell">
+              <div class="result-label">Perimeter / Circumf.</div>
+              <div class="result-value neutral" id="area-perim">—</div>
+            </div>
+          </div>
+          <p class="formula-note" id="area-formula"></p>
+        </div>
+      </div>
+
+      <!-- Power / Exponent -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Power &amp; Root Calculator</h3>
+          <p>Calculate powers, square roots, cube roots, and any nth root. Useful for scientific calculations, engineering and school maths.</p>
+        </div>
+        <div class="calc-body">
+          <div class="field">
+            <label>Mode</label>
+            <select id="pow-mode" onchange="calcPow()">
+              <option value="power">bⁿ — power</option>
+              <option value="sqrt">√b — square root</option>
+              <option value="cbrt">∛b — cube root</option>
+              <option value="nroot">ⁿ√b — nth root</option>
+            </select>
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label id="pow-label-b">Base (b)</label>
+              <input type="number" id="pow-b" placeholder="8" oninput="calcPow()">
+            </div>
+            <div class="field" id="pow-exp-field">
+              <label>Exponent / n</label>
+              <input type="number" id="pow-n" placeholder="3" oninput="calcPow()">
+            </div>
+          </div>
+          <div class="result-box">
+            <div class="result-label">Result</div>
+            <div class="result-value neutral" id="pow-result">—</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ CONVERTERS ══ -->
+  <div class="cat-section" id="converters">
+    <div class="cat-header">
+      <div class="cat-icon">⚡</div>
+      <div>
+        <h2>Unit Converters</h2>
+        <p>Length, weight, temperature, speed and data</p>
+      </div>
+    </div>
+    <div class="calc-grid">
+
+      <!-- Length -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Length Converter</h3>
+          <p>Convert between metric and imperial length units: kilometres, metres, centimetres, miles, yards, feet and inches.</p>
+        </div>
+        <div class="calc-body">
+          <div class="converter-wrap">
+            <div class="field">
+              <label>From</label>
+              <select id="len-from" onchange="calcLength()">
+                <option value="m">Metres (m)</option>
+                <option value="km">Kilometres (km)</option>
+                <option value="cm">Centimetres (cm)</option>
+                <option value="mm">Millimetres (mm)</option>
+                <option value="mi">Miles (mi)</option>
+                <option value="yd">Yards (yd)</option>
+                <option value="ft">Feet (ft)</option>
+                <option value="in">Inches (in)</option>
+              </select>
+            </div>
+            <div class="converter-arrow">→</div>
+            <div class="field">
+              <label>To</label>
+              <select id="len-to" onchange="calcLength()">
+                <option value="km">Kilometres (km)</option>
+                <option value="m">Metres (m)</option>
+                <option value="cm">Centimetres (cm)</option>
+                <option value="mm">Millimetres (mm)</option>
+                <option value="mi">Miles (mi)</option>
+                <option value="yd">Yards (yd)</option>
+                <option value="ft">Feet (ft)</option>
+                <option value="in">Inches (in)</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Value</label>
+            <input type="number" id="len-val" placeholder="1" oninput="calcLength()">
+          </div>
+          <div class="result-box">
+            <div class="result-label">Result</div>
+            <div class="result-value neutral" id="len-result">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weight -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Weight &amp; Mass Converter</h3>
+          <p>Convert between kilograms, grams, pounds, ounces, stone and tonnes. Ideal for cooking, fitness, shipping and science.</p>
+        </div>
+        <div class="calc-body">
+          <div class="converter-wrap">
+            <div class="field">
+              <label>From</label>
+              <select id="wt-from" onchange="calcWeight()">
+                <option value="kg">Kilograms (kg)</option>
+                <option value="g">Grams (g)</option>
+                <option value="mg">Milligrams (mg)</option>
+                <option value="lb">Pounds (lb)</option>
+                <option value="oz">Ounces (oz)</option>
+                <option value="st">Stone (st)</option>
+                <option value="t">Tonnes (t)</option>
+              </select>
+            </div>
+            <div class="converter-arrow">→</div>
+            <div class="field">
+              <label>To</label>
+              <select id="wt-to" onchange="calcWeight()">
+                <option value="lb">Pounds (lb)</option>
+                <option value="kg">Kilograms (kg)</option>
+                <option value="g">Grams (g)</option>
+                <option value="mg">Milligrams (mg)</option>
+                <option value="oz">Ounces (oz)</option>
+                <option value="st">Stone (st)</option>
+                <option value="t">Tonnes (t)</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Value</label>
+            <input type="number" id="wt-val" placeholder="1" oninput="calcWeight()">
+          </div>
+          <div class="result-box">
+            <div class="result-label">Result</div>
+            <div class="result-value neutral" id="wt-result">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Temperature -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Temperature Converter</h3>
+          <p>Convert between Celsius, Fahrenheit and Kelvin. Essential for cooking recipes, weather, science and engineering.</p>
+        </div>
+        <div class="calc-body">
+          <div class="converter-wrap">
+            <div class="field">
+              <label>From</label>
+              <select id="temp-from" onchange="calcTemp()">
+                <option value="c">Celsius (°C)</option>
+                <option value="f">Fahrenheit (°F)</option>
+                <option value="k">Kelvin (K)</option>
+              </select>
+            </div>
+            <div class="converter-arrow">→</div>
+            <div class="field">
+              <label>To</label>
+              <select id="temp-to" onchange="calcTemp()">
+                <option value="f">Fahrenheit (°F)</option>
+                <option value="c">Celsius (°C)</option>
+                <option value="k">Kelvin (K)</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Temperature</label>
+            <input type="number" id="temp-val" placeholder="100" oninput="calcTemp()">
+          </div>
+          <div class="result-box">
+            <div class="result-label">Result</div>
+            <div class="result-value neutral" id="temp-result">—</div>
+          </div>
+          <p class="formula-note">Key points: 0°C = 32°F, 100°C = 212°F, −40°C = −40°F (equal point), 0 K = −273.15°C (absolute zero).</p>
+        </div>
+      </div>
+
+      <!-- Speed -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Speed Converter</h3>
+          <p>Convert between km/h, m/s, mph, knots and Mach. Useful for travel, physics, aviation and engineering calculations.</p>
+        </div>
+        <div class="calc-body">
+          <div class="converter-wrap">
+            <div class="field">
+              <label>From</label>
+              <select id="spd-from" onchange="calcSpeed()">
+                <option value="kmh">km/h</option>
+                <option value="ms">m/s</option>
+                <option value="mph">mph</option>
+                <option value="knot">Knots</option>
+                <option value="mach">Mach</option>
+              </select>
+            </div>
+            <div class="converter-arrow">→</div>
+            <div class="field">
+              <label>To</label>
+              <select id="spd-to" onchange="calcSpeed()">
+                <option value="mph">mph</option>
+                <option value="kmh">km/h</option>
+                <option value="ms">m/s</option>
+                <option value="knot">Knots</option>
+                <option value="mach">Mach</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Speed</label>
+            <input type="number" id="spd-val" placeholder="100" oninput="calcSpeed()">
+          </div>
+          <div class="result-box">
+            <div class="result-label">Result</div>
+            <div class="result-value neutral" id="spd-result">—</div>
+          </div>
+          <p class="formula-note">Reference: 1 Mach ≈ 1235 km/h at sea level (sound speed varies with temperature/altitude).</p>
+        </div>
+      </div>
+
+      <!-- Data Storage -->
+      <div class="calc-card">
+        <div class="calc-card-head">
+          <h3>Data Storage Converter</h3>
+          <p>Convert between bits, bytes, kilobytes, megabytes, gigabytes, terabytes and petabytes. Uses base-2 (binary) values standard in computing.</p>
+        </div>
+        <div class="calc-body">
+          <div class="converter-wrap">
+            <div class="field">
+              <label>From</label>
+              <select id="data-from" onchange="calcData()">
+                <option value="B">Bytes (B)</option>
+                <option value="bit">Bits</option>
+                <option value="KB">Kilobytes (KB)</option>
+                <option value="MB">Megabytes (MB)</option>
+                <option value="GB">Gigabytes (GB)</option>
+                <option value="TB">Terabytes (TB)</option>
+                <option value="PB">Petabytes (PB)</option>
+              </select>
+            </div>
+            <div class="converter-arrow">→</div>
+            <div class="field">
+              <label>To</label>
+              <select id="data-to" onchange="calcData()">
+                <option value="MB">Megabytes (MB)</option>
+                <option value="bit">Bits</option>
+                <option value="B">Bytes (B)</option>
+                <option value="KB">Kilobytes (KB)</option>
+                <option value="GB">Gigabytes (GB)</option>
+                <option value="TB">Terabytes (TB)</option>
+                <option value="PB">Petabytes (PB)</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Value</label>
+            <input type="number" id="data-val" placeholder="1" oninput="calcData()">
+          </div>
+          <div class="result-box">
+            <div class="result-label">Result</div>
+            <div class="result-value neutral" id="data-result">—</div>
+          </div>
+          <p class="formula-note">1 KB = 1,024 bytes; 1 MB = 1,024 KB; 1 GB = 1,024 MB (IEC binary standard).</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /main-wrap -->
+
+<!-- ── INFO CARDS (SEO content) ── -->
+<div class="info-section">
+  <div class="info-card">
+    <h3>Why use Calc. by CommandBot?</h3>
+    <p>All calculators run entirely in your browser — no data is sent to any server. Results appear instantly as you type, with no sign-up, no subscription and no ads cluttering the results panel.</p>
+  </div>
+  <div class="info-card">
+    <h3>Accurate &amp; up to date</h3>
+    <p>The GST calculator uses the current Australian rate of 10%. Financial formulas (loan, compound interest) follow industry-standard amortisation methods. Health calculators use peer-reviewed equations.</p>
+  </div>
+  <div class="info-card">
+    <h3>Mobile friendly</h3>
+    <p>Every calculator is fully responsive and works on phones, tablets and desktops. Touch-optimised inputs make it easy to enter values on any device.</p>
+  </div>
+  <div class="info-card">
+    <h3>Privacy first</h3>
+    <p>No cookies are required for the calculators to work. We don't store any values you enter. The only third-party code on this page is Google AdSense, which helps us keep the service free.</p>
+  </div>
+</div>
+
+<!-- ── AD (mid-page) ── -->
+<div class="ad-banner" style="margin-bottom:3rem">
+  <div class="ad-inner">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-2695796727312656" data-ad-slot="CALC-BANNER-MID" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+  </div>
+</div>
+
+<!-- ── ABOUT PAGE ── -->
+<div class="text-page" id="page-about">
+  <h1>About Calc.</h1>
+  <p class="lead">Free calculators built and maintained by CommandBot Co.</p>
+  <h2>What is Calc.?</h2>
+  <p>Calc. is a suite of free online calculators and unit converters covering finance, health, maths and everyday conversions. Every tool runs entirely in your browser — there's nothing to install, no account to create and no data stored on our servers.</p>
+  <h2>Who built it?</h2>
+  <p>Calc. is a product of <a href="https://cmdbot.xyz" style="color:var(--accent);text-decoration:none">CommandBot Co.</a>, an independent software company building precision tools for power users. Our other product, <a href="https://wwindex.cmdbot.xyz" style="color:var(--accent);text-decoration:none">Conflict Briefings</a>, provides daily geopolitical intelligence.</p>
+  <h2>Accuracy &amp; limitations</h2>
+  <p>Our calculators use standard mathematical formulas and are intended for informational and planning purposes. They are not a substitute for professional financial, medical or legal advice. Always verify critical calculations with a qualified professional.</p>
+  <ul>
+    <li>GST calculations are based on the Australian GST rate of 10%.</li>
+    <li>Health calculators (BMI, TDEE, IBW) use commonly accepted clinical formulas but are estimates.</li>
+    <li>Loan and interest calculations assume fixed rates and standard amortisation.</li>
+  </ul>
+  <h2>Contact</h2>
+  <p>Have a suggestion for a new calculator? Found a bug? Reach out via <a href="https://cmdbot.xyz" style="color:var(--accent);text-decoration:none">cmdbot.xyz</a>.</p>
+  <br>
+  <a href="#" onclick="showPage(null);return false;" style="color:var(--accent);font-size:0.875rem">← Back to calculators</a>
+</div>
+
+<!-- ── PRIVACY PAGE ── -->
+<div class="text-page" id="page-privacy">
+  <h1>Privacy Policy</h1>
+  <p class="lead">Last updated: May 2025</p>
+  <h2>Overview</h2>
+  <p>Calc. by CommandBot ("we", "us") is committed to protecting your privacy. This policy explains what information is collected when you use calcs.cmdbot.xyz.</p>
+  <h2>Information we collect</h2>
+  <p>We do not collect, store or transmit any values you enter into our calculators. All calculations happen locally in your browser.</p>
+  <p>Standard server logs may record your IP address, browser type, referring URL and page visited. These logs are retained for up to 30 days for security and performance monitoring and are not sold or shared with third parties.</p>
+  <h2>Google AdSense</h2>
+  <p>We use Google AdSense to display advertisements. Google may use cookies or device identifiers to serve personalised ads based on your interests. You can opt out of personalised advertising at <a href="https://adssettings.google.com" style="color:var(--accent);text-decoration:none">adssettings.google.com</a>. For more information, see <a href="https://policies.google.com/privacy" style="color:var(--accent);text-decoration:none">Google's Privacy Policy</a>.</p>
+  <h2>Cookies</h2>
+  <p>This site does not set any first-party cookies. Google AdSense may set third-party cookies for ad personalisation.</p>
+  <h2>Children's privacy</h2>
+  <p>This site is not directed at children under 13. We do not knowingly collect personal information from children.</p>
+  <h2>Changes to this policy</h2>
+  <p>We may update this policy from time to time. The "last updated" date at the top of this page will reflect any changes.</p>
+  <h2>Contact</h2>
+  <p>For privacy questions, contact us via <a href="https://cmdbot.xyz" style="color:var(--accent);text-decoration:none">cmdbot.xyz</a>.</p>
+  <br>
+  <a href="#" onclick="showPage(null);return false;" style="color:var(--accent);font-size:0.875rem">← Back to calculators</a>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <a href="https://www.buymeacoffee.com/appalex" target="_blank" rel="noopener noreferrer" class="coffee-btn">☕ Buy me a coffee</a>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('about');return false;">About</a>
+      <a href="#" onclick="showPage('privacy');return false;">Privacy Policy</a>
+      <a href="https://cmdbot.xyz">CommandBot Co.</a>
+    </div>
+    <p>© 2025 CommandBot Co. · Free online calculators for everyone.</p>
+  </div>
+</footer>
+
+<script>
+// ── Helpers ──
+const fmt = (n, dp = 2) => isNaN(n) || !isFinite(n) ? '—' : n.toLocaleString('en-AU', { minimumFractionDigits: dp, maximumFractionDigits: dp });
+const fmtCur = (n) => isNaN(n) || !isFinite(n) ? '—' : '$' + Math.abs(n).toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const el = id => document.getElementById(id);
+const val = id => parseFloat(el(id)?.value) || 0;
+
+// ── GST ──
+function calcGST() {
+  const amt = val('gst-amount'), type = el('gst-type').value;
+  let tax, total;
+  if (type === 'add') { tax = amt * 0.1; total = amt + tax; }
+  else { total = amt; tax = amt - amt / 1.1; }
+  el('gst-tax').textContent = fmtCur(tax);
+  el('gst-total').textContent = fmtCur(type === 'add' ? total : amt / 1.1);
+}
+
+// ── Percentage ──
+function calcPct() {
+  const mode = el('pct-mode').value, a = val('pct-a'), b = val('pct-b');
+  let res; let formula = '';
+  if (mode === 'of') {
+    res = (a / 100) * b;
+    el('pct-label-a').textContent = 'Percentage (%)'; el('pct-label-b').textContent = 'of Value';
+    el('pct-suffix-a').textContent = '%'; formula = `Formula: (${a} / 100) × ${b} = ${fmt(res)}`;
+  } else if (mode === 'what') {
+    res = (a / b) * 100;
+    el('pct-label-a').textContent = 'Value X'; el('pct-label-b').textContent = 'of Value Y';
+    el('pct-suffix-a').textContent = ''; formula = `Formula: (${a} / ${b}) × 100 = ${fmt(res)}%`;
+  } else {
+    res = ((b - a) / Math.abs(a)) * 100;
+    el('pct-label-a').textContent = 'Original (X)'; el('pct-label-b').textContent = 'New Value (Y)';
+    el('pct-suffix-a').textContent = ''; formula = `Change: ${fmt(res)}% ${res >= 0 ? 'increase' : 'decrease'}`;
+  }
+  el('pct-result').textContent = mode === 'what' ? fmt(res) + '%' : (mode === 'change' ? fmt(res) + '%' : '$' + fmt(res) === '$—' ? '—' : fmt(res));
+  el('pct-formula').textContent = formula;
+}
+
+// ── Loan ──
+function calcLoan() {
+  const P = val('loan-amount'), r = val('loan-rate') / 100 / 12, n = val('loan-years') * 12;
+  if (!P || !r || !n) return;
+  const M = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+  const total = M * n, interest = total - P;
+  el('loan-monthly').textContent = fmtCur(M);
+  el('loan-interest').textContent = fmtCur(interest);
+  el('loan-total').textContent = fmtCur(total);
+}
+
+// ── Compound Interest ──
+function calcCI() {
+  const P = val('ci-principal'), r = val('ci-rate') / 100, t = val('ci-years'), n = parseInt(el('ci-freq').value);
+  if (!P || !r || !t) return;
+  const A = P * Math.pow(1 + r / n, n * t);
+  el('ci-total').textContent = fmtCur(A);
+  el('ci-earned').textContent = fmtCur(A - P);
+}
+
+// ── Tip ──
+function calcTip() {
+  const bill = val('tip-bill'), pct = val('tip-pct'), people = Math.max(1, val('tip-people') || 1);
+  const tip = bill * pct / 100, total = bill + tip;
+  el('tip-amount').textContent = fmtCur(tip);
+  el('tip-total').textContent = fmtCur(total);
+  el('tip-per').textContent = fmtCur(total / people);
+}
+
+// ── Discount ──
+function calcDiscount() {
+  const mode = el('disc-mode').value, orig = val('disc-original'), b = val('disc-b');
+  if (mode === 'from-pct') {
+    const save = orig * b / 100;
+    el('disc-b-label').textContent = 'Discount (%)'; el('disc-b-suffix').textContent = '%';
+    el('disc-result-label').textContent = 'Sale Price';
+    el('disc-saving').textContent = fmtCur(save);
+    el('disc-result').textContent = fmtCur(orig - save);
+  } else {
+    const save = orig - b, discPct = save / orig * 100;
+    el('disc-b-label').textContent = 'Sale Price ($)'; el('disc-b-suffix').textContent = '';
+    el('disc-result-label').textContent = 'Discount %';
+    el('disc-saving').textContent = fmtCur(save);
+    el('disc-result').textContent = fmt(discPct) + '%';
+  }
+}
+
+// ── BMI ──
+function calcBMI() {
+  const units = el('bmi-units').value;
+  el('bmi-metric-fields').style.display = units === 'metric' ? '' : 'none';
+  el('bmi-imperial-fields').style.display = units === 'imperial' ? '' : 'none';
+  el('bmi-imperial-weight').style.display = units === 'imperial' ? '' : 'none';
+  let bmi;
+  if (units === 'metric') {
+    const h = val('bmi-height-cm') / 100, w = val('bmi-weight-kg');
+    bmi = h > 0 ? w / (h * h) : NaN;
+  } else {
+    const totalIn = val('bmi-height-ft') * 12 + val('bmi-height-in'), w = val('bmi-weight-lb');
+    const hm = totalIn * 0.0254;
+    bmi = hm > 0 ? (w * 0.453592) / (hm * hm) : NaN;
+  }
+  if (!isFinite(bmi) || bmi <= 0) { el('bmi-result').textContent = '—'; el('bmi-category').textContent = ''; return; }
+  el('bmi-result').textContent = fmt(bmi, 1);
+  const cat = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Normal weight' : bmi < 30 ? 'Overweight' : 'Obese';
+  const colors = { 'Underweight': '#60a5fa', 'Normal weight': '#22c55e', 'Overweight': '#f59e0b', 'Obese': '#ef4444' };
+  el('bmi-result').style.color = colors[cat];
+  el('bmi-category').textContent = 'Category: ' + cat;
+}
+
+// ── TDEE ──
+function calcTDEE() {
+  const age = val('cal-age'), g = el('cal-gender').value, h = val('cal-height'), w = val('cal-weight'), act = parseFloat(el('cal-activity').value);
+  if (!age || !h || !w) return;
+  const bmr = g === 'male' ? 10 * w + 6.25 * h - 5 * age + 5 : 10 * w + 6.25 * h - 5 * age - 161;
+  const tdee = bmr * act;
+  el('tdee-maintain').textContent = Math.round(tdee) + ' kcal';
+  el('tdee-lose').textContent = Math.round(tdee - 500) + ' kcal';
+}
+
+// ── Age ──
+function parseDate(str) {
+  const parts = str.replace(/[^0-9]/g, '/').split('/');
+  if (parts.length !== 3) return null;
+  const [d, m, y] = parts.map(Number);
+  if (!d || !m || !y || y < 1900 || y > 2100) return null;
+  const dt = new Date(y, m - 1, d);
+  return isNaN(dt) ? null : dt;
+}
+function calcAge() {
+  const dob = parseDate(el('age-dob').value);
+  if (!dob) { el('age-result').textContent = '—'; el('age-sub').textContent = ''; return; }
+  const asof = parseDate(el('age-asof').value) || new Date();
+  let years = asof.getFullYear() - dob.getFullYear();
+  let months = asof.getMonth() - dob.getMonth();
+  let days = asof.getDate() - dob.getDate();
+  if (days < 0) { months--; const prevMonth = new Date(asof.getFullYear(), asof.getMonth(), 0); days += prevMonth.getDate(); }
+  if (months < 0) { years--; months += 12; }
+  el('age-result').textContent = `${years} yrs, ${months} mo, ${days} days`;
+  const next = new Date(asof.getFullYear(), dob.getMonth(), dob.getDate());
+  if (next <= asof) next.setFullYear(next.getFullYear() + 1);
+  const diff = Math.round((next - asof) / 86400000);
+  el('age-sub').textContent = `Next birthday in ${diff} day${diff === 1 ? '' : 's'}`;
+}
+
+// ── IBW ──
+function calcIBW() {
+  const hcm = val('ibw-height'), g = el('ibw-gender').value;
+  if (!hcm) return;
+  const hIn = hcm / 2.54, excessIn = Math.max(0, hIn - 60);
+  const hamwi = g === 'male' ? 48 + 2.7 * excessIn : 45.4 + 2.27 * excessIn;
+  const devine = g === 'male' ? 50 + 2.3 * excessIn : 45.5 + 2.3 * excessIn;
+  const hm = hcm / 100;
+  const low = 18.5 * hm * hm, high = 24.9 * hm * hm;
+  el('ibw-hamwi').textContent = fmt(hamwi, 1) + ' kg';
+  el('ibw-devine').textContent = fmt(devine, 1) + ' kg';
+  el('ibw-bmi-range').textContent = fmt(low, 1) + ' – ' + fmt(high, 1) + ' kg';
+}
+
+// ── Fraction ──
+function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
+function calcFraction() {
+  const op = el('frac-op').value;
+  const a1 = parseInt(el('f1n').value) || 0, b1 = parseInt(el('f1d').value) || 1;
+  const a2 = parseInt(el('f2n').value) || 0, b2 = parseInt(el('f2d').value) || 1;
+  const opSymbols = { add: '+', sub: '−', mul: '×', div: '÷' };
+  el('frac-op-display').textContent = opSymbols[op];
+  if (!b1 || !b2) { el('frac-result').textContent = 'Invalid'; return; }
+  let rn, rd;
+  if (op === 'add') { rn = a1 * b2 + a2 * b1; rd = b1 * b2; }
+  else if (op === 'sub') { rn = a1 * b2 - a2 * b1; rd = b1 * b2; }
+  else if (op === 'mul') { rn = a1 * a2; rd = b1 * b2; }
+  else { rn = a1 * b2; rd = b1 * a2; }
+  if (rd === 0) { el('frac-result').textContent = 'Undefined'; return; }
+  const g = gcd(Math.abs(rn), Math.abs(rd));
+  rn /= g; rd /= g;
+  if (rd < 0) { rn = -rn; rd = -rd; }
+  el('frac-result').textContent = rd === 1 ? `${rn}` : `${rn}/${rd}`;
+  el('frac-decimal').textContent = `Decimal: ${fmt(rn / rd, 6).replace(/0+$/, '').replace(/\.$/, '')}`;
+}
+
+// ── Quadratic ──
+function calcQuad() {
+  const a = val('quad-a'), b = val('quad-b'), c = val('quad-c');
+  if (!a) { el('quad-result').textContent = 'a cannot be 0'; return; }
+  const disc = b * b - 4 * a * c;
+  el('quad-discriminant').textContent = `Discriminant (Δ) = ${fmt(disc, 4)}`;
+  if (disc > 0) {
+    const x1 = (-b + Math.sqrt(disc)) / (2 * a), x2 = (-b - Math.sqrt(disc)) / (2 * a);
+    el('quad-result').textContent = `x₁ = ${fmt(x1, 6).replace(/0+$/, '').replace(/\.$/, '')},  x₂ = ${fmt(x2, 6).replace(/0+$/, '').replace(/\.$/, '')}`;
+  } else if (disc === 0) {
+    el('quad-result').textContent = `x = ${fmt(-b / (2 * a), 6).replace(/0+$/, '').replace(/\.$/, '')} (double root)`;
+  } else {
+    const real = -b / (2 * a), imag = Math.sqrt(-disc) / (2 * a);
+    el('quad-result').textContent = `x = ${fmt(real, 4)} ± ${fmt(imag, 4)}i`;
+  }
+}
+
+// ── Area ──
+const areaConfigs = {
+  circle: { fields: [{id:'r', label:'Radius', unit:'units'}], formula: 'Area = πr²,  Circumference = 2πr' },
+  rectangle: { fields: [{id:'rw', label:'Width', unit:'units'}, {id:'rh', label:'Height', unit:'units'}], formula: 'Area = width × height,  Perimeter = 2(w+h)' },
+  triangle: { fields: [{id:'tb', label:'Base', unit:'units'}, {id:'th', label:'Height', unit:'units'}], formula: 'Area = ½ × base × height. Perimeter shown if all three sides known.' },
+  trapezoid: { fields: [{id:'ta', label:'Side a (top)', unit:'units'}, {id:'tbb', label:'Side b (bottom)', unit:'units'}, {id:'tht', label:'Height', unit:'units'}], formula: 'Area = ½ × (a+b) × height' }
+};
+function renderAreaFields() {
+  const shape = el('area-shape').value, cfg = areaConfigs[shape];
+  el('area-fields').innerHTML = '<div class="row-2">' + cfg.fields.map(f =>
+    `<div class="field"><label>${f.label}</label><input type="number" id="${f.id}" placeholder="0" oninput="calcArea()"></div>`
+  ).join('') + '</div>';
+  el('area-formula').textContent = cfg.formula;
+  el('area-result-grid').style.display = 'none';
+}
+function calcArea() {
+  const shape = el('area-shape').value;
+  let area = 0, perim = 0;
+  if (shape === 'circle') { const r = val('r'); area = Math.PI * r * r; perim = 2 * Math.PI * r; }
+  else if (shape === 'rectangle') { const w = val('rw'), h = val('rh'); area = w * h; perim = 2 * (w + h); }
+  else if (shape === 'triangle') { const b = val('tb'), h = val('th'); area = 0.5 * b * h; perim = 0; }
+  else if (shape === 'trapezoid') { const a = val('ta'), b = val('tbb'), h = val('tht'); area = 0.5 * (a + b) * h; perim = 0; }
+  el('area-result-grid').style.display = 'grid';
+  el('area-result').textContent = fmt(area, 4).replace(/0+$/, '').replace(/\.$/, '') + ' units²';
+  el('area-perim').textContent = perim > 0 ? fmt(perim, 4).replace(/0+$/, '').replace(/\.$/, '') + ' units' : '—';
+}
+renderAreaFields();
+
+// ── Power ──
+function calcPow() {
+  const mode = el('pow-mode').value, b = val('pow-b'), n = val('pow-n');
+  el('pow-exp-field').style.display = (mode === 'sqrt' || mode === 'cbrt') ? 'none' : '';
+  let res;
+  if (mode === 'power') res = Math.pow(b, n);
+  else if (mode === 'sqrt') res = Math.sqrt(b);
+  else if (mode === 'cbrt') res = Math.cbrt(b);
+  else res = Math.pow(b, 1 / n);
+  el('pow-result').textContent = isFinite(res) ? String(parseFloat(res.toPrecision(10))) : '—';
+}
+
+// ── Unit Converters ──
+const lenToM = { m:1, km:1000, cm:0.01, mm:0.001, mi:1609.344, yd:0.9144, ft:0.3048, 'in':0.0254 };
+function calcLength() {
+  const v = val('len-val'), f = el('len-from').value, t = el('len-to').value;
+  const res = v * lenToM[f] / lenToM[t];
+  el('len-result').textContent = isFinite(res) ? String(parseFloat(res.toPrecision(8))) + ' ' + t : '—';
+}
+
+const wtToKg = { kg:1, g:0.001, mg:0.000001, lb:0.453592, oz:0.0283495, st:6.35029, t:1000 };
+function calcWeight() {
+  const v = val('wt-val'), f = el('wt-from').value, t = el('wt-to').value;
+  const res = v * wtToKg[f] / wtToKg[t];
+  el('wt-result').textContent = isFinite(res) ? String(parseFloat(res.toPrecision(8))) + ' ' + t : '—';
+}
+
+function calcTemp() {
+  const v = val('temp-val'), f = el('temp-from').value, t = el('temp-to').value;
+  let celsius;
+  if (f === 'c') celsius = v; else if (f === 'f') celsius = (v - 32) * 5 / 9; else celsius = v - 273.15;
+  let res;
+  if (t === 'c') res = celsius; else if (t === 'f') res = celsius * 9 / 5 + 32; else res = celsius + 273.15;
+  const unit = t === 'c' ? '°C' : t === 'f' ? '°F' : ' K';
+  el('temp-result').textContent = isFinite(res) ? fmt(res, 4).replace(/0+$/, '').replace(/\.$/, '') + unit : '—';
+}
+
+const spdToMs = { kmh: 1/3.6, ms: 1, mph: 0.44704, knot: 0.514444, mach: 340.29 };
+function calcSpeed() {
+  const v = val('spd-val'), f = el('spd-from').value, t = el('spd-to').value;
+  const res = v * spdToMs[f] / spdToMs[t];
+  const units = { kmh:'km/h', ms:'m/s', mph:'mph', knot:'kn', mach:'Mach' };
+  el('spd-result').textContent = isFinite(res) ? String(parseFloat(res.toPrecision(7))) + ' ' + units[t] : '—';
+}
+
+const dataToBytes = { bit:0.125, B:1, KB:1024, MB:1048576, GB:1073741824, TB:1099511627776, PB:1125899906842624 };
+function calcData() {
+  const v = val('data-val'), f = el('data-from').value, t = el('data-to').value;
+  const res = v * dataToBytes[f] / dataToBytes[t];
+  el('data-result').textContent = isFinite(res) ? String(parseFloat(res.toPrecision(8))) + ' ' + t : '—';
+}
+
+// ── Page switching ──
+function showPage(name) {
+  const pages = document.querySelectorAll('.text-page');
+  const calcs = document.getElementById('calculators');
+  const hero = document.querySelector('.hero');
+  const infos = document.querySelector('.info-section');
+  const ads = document.querySelectorAll('.ad-banner');
+  pages.forEach(p => p.classList.remove('visible'));
+  if (name) {
+    const pg = document.getElementById('page-' + name);
+    if (pg) { pg.classList.add('visible'); calcs.style.display = 'none'; hero.style.display = 'none'; if (infos) infos.style.display = 'none'; ads.forEach(a => a.style.display = 'none'); }
+  } else {
+    calcs.style.display = ''; hero.style.display = ''; if (infos) infos.style.display = ''; ads.forEach(a => a.style.display = '');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+// ── AdSense push ──
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</body>
+</html>
