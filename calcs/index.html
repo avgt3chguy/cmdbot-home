@@ -37,22 +37,17 @@
       --bg: #0a0b0f;
       --surface: #12141c;
       --surface-2: #1a1d27;
-      --surface-3: #20233200;
       --border: #252836;
       --border-focus: rgba(91,106,240,0.5);
       --text: #e8eaf0;
       --text-muted: #7c8399;
       --text-dim: #4a4f66;
       --accent: #5b6af0;
-      --accent-hover: #6b7af8;
       --accent-glow: rgba(91,106,240,0.15);
       --green: #22c55e;
-      --green-glow: rgba(34,197,94,0.12);
       --orange: #f59e0b;
-      --red: #ef4444;
       --radius: 14px;
       --radius-sm: 8px;
-      --radius-xs: 5px;
     }
 
     html { scroll-behavior: smooth; }
@@ -92,11 +87,7 @@
     .logo span { color: var(--accent); }
     .logo sub { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); vertical-align: baseline; margin-left: 2px; }
 
-    .nav-cats {
-      display: flex;
-      gap: 0.25rem;
-      flex-wrap: wrap;
-    }
+    .nav-cats { display: flex; gap: 0.25rem; flex-wrap: wrap; }
     .nav-cat {
       font-size: 0.78rem;
       font-weight: 600;
@@ -110,7 +101,6 @@
       transition: color 0.15s, background 0.15s;
     }
     .nav-cat:hover { color: var(--text); background: var(--surface-2); }
-    .nav-cat.active { color: var(--accent); background: var(--accent-glow); }
 
     /* ── Hero ── */
     .hero {
@@ -124,13 +114,7 @@
     .hero h1 em { font-style: normal; color: var(--accent); }
     .hero p { font-size: 1rem; color: var(--text-muted); max-width: 520px; margin: 0 auto 2rem; line-height: 1.7; }
 
-    .cat-pills {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 0.5rem;
-    }
+    .cat-pills { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
     .cat-pill {
       font-size: 0.8rem;
       font-weight: 600;
@@ -144,14 +128,9 @@
       text-decoration: none;
     }
     .cat-pill:hover { border-color: var(--accent); color: var(--accent); }
-    .cat-pill.active { background: var(--accent-glow); border-color: var(--accent); color: var(--accent); }
 
     /* ── Ad slot ── */
-    .ad-banner {
-      max-width: 1080px;
-      margin: 0 auto 2rem;
-      padding: 0 1.5rem;
-    }
+    .ad-banner { max-width: 1080px; margin: 0 auto 2rem; padding: 0 1.5rem; }
     .ad-inner {
       background: rgba(255,255,255,0.02);
       border: 1px dashed rgba(255,255,255,0.07);
@@ -164,12 +143,7 @@
     }
 
     /* ── Main layout ── */
-    .main-wrap {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 1.5rem 5rem;
-      flex: 1;
-    }
+    .main-wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem 5rem; flex: 1; }
 
     /* ── Section headers ── */
     .cat-section { margin-bottom: 4rem; }
@@ -281,6 +255,7 @@
 
     .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 
+    /* ── Single result box (used by every card) ── */
     .result-box {
       background: var(--surface-2);
       border: 1px solid var(--border);
@@ -292,33 +267,17 @@
     .result-value { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; color: var(--green); }
     .result-value.neutral { color: var(--text); }
     .result-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem; }
-
-    .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
-    .result-cell {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 0.75rem 1rem;
-    }
-    .result-cell .result-label { margin-bottom: 0.2rem; }
-    .result-cell .result-value { font-size: 1.15rem; }
-
-    .formula-note {
-      font-size: 0.73rem;
-      color: var(--text-dim);
-      margin-top: 0.85rem;
-      padding-top: 0.85rem;
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
       border-top: 1px solid var(--border);
-      line-height: 1.5;
     }
-    .formula-note code {
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      background: var(--surface-2);
-      padding: 0.1rem 0.35rem;
-      border-radius: 3px;
-      font-size: 0.7rem;
-      color: var(--accent);
-    }
+    .result-row-label { font-size: 0.7rem; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+    .result-row-value { font-size: 0.9rem; font-weight: 700; color: var(--text-muted); }
 
     /* ── Unit converter specific ── */
     .converter-wrap { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.75rem; align-items: end; }
@@ -343,11 +302,7 @@
     .info-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
 
     /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 1.5rem;
-      text-align: center;
-    }
+    footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; }
     .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
     .footer-links { display: flex; gap: 1.5rem; }
     .footer-links a { font-size: 0.78rem; color: var(--text-dim); text-decoration: none; transition: color 0.15s; }
@@ -371,7 +326,6 @@
       .calc-grid { grid-template-columns: 1fr; }
       .nav-cats { display: none; }
       .row-2 { grid-template-columns: 1fr; }
-      .result-grid { grid-template-columns: 1fr; }
       .converter-wrap { grid-template-columns: 1fr; }
       .converter-arrow { display: none; }
     }
@@ -383,12 +337,12 @@
   <nav>
     <a href="https://cmdbot.xyz" class="logo">Command<span>Bot</span> <sub>Calc.</sub></a>
     <div class="nav-cats">
-      <a href="#finance" class="nav-cat" data-cat="finance">Finance</a>
-      <a href="#health" class="nav-cat" data-cat="health">Health</a>
-      <a href="#maths" class="nav-cat" data-cat="maths">Maths</a>
-      <a href="#converters" class="nav-cat" data-cat="converters">Converters</a>
-      <a href="#" class="nav-cat" data-page="about" onclick="showPage('about');return false;">About</a>
-      <a href="#" class="nav-cat" data-page="privacy" onclick="showPage('privacy');return false;">Privacy</a>
+      <a href="#finance" class="nav-cat">Finance</a>
+      <a href="#health" class="nav-cat">Health</a>
+      <a href="#maths" class="nav-cat">Maths</a>
+      <a href="#converters" class="nav-cat">Converters</a>
+      <a href="#" class="nav-cat" onclick="showPage('about');return false;">About</a>
+      <a href="#" class="nav-cat" onclick="showPage('privacy');return false;">Privacy</a>
     </div>
   </nav>
 </header>
@@ -399,10 +353,10 @@
   <h1>The <em>calculator</em> for everything</h1>
   <p>Finance, health, maths and unit conversion — over 15 free tools that give you instant results as you type. No ads in results, no paywalls.</p>
   <div class="cat-pills">
-    <a href="#finance" class="cat-pill" onclick="filterCat('finance')">💰 Finance</a>
-    <a href="#health" class="cat-pill" onclick="filterCat('health')">❤️ Health</a>
-    <a href="#maths" class="cat-pill" onclick="filterCat('maths')">📐 Maths</a>
-    <a href="#converters" class="cat-pill" onclick="filterCat('converters')">⚡ Converters</a>
+    <a href="#finance" class="cat-pill">💰 Finance</a>
+    <a href="#health" class="cat-pill">❤️ Health</a>
+    <a href="#maths" class="cat-pill">📐 Maths</a>
+    <a href="#converters" class="cat-pill">⚡ Converters</a>
   </div>
 </section>
 
@@ -427,7 +381,7 @@
     </div>
     <div class="calc-grid">
 
-      <!-- GST Calculator -->
+      <!-- GST -->
       <div class="calc-card">
         <div class="calc-card-head">
           <h3>GST Calculator</h3>
@@ -448,21 +402,18 @@
               <option value="remove">Remove GST (inc-GST → ex-GST)</option>
             </select>
           </div>
-          <div class="result-grid">
-            <div class="result-cell">
-              <div class="result-label">GST Amount</div>
-              <div class="result-value" id="gst-tax">$0.00</div>
-            </div>
-            <div class="result-cell">
-              <div class="result-label">Total Amount</div>
-              <div class="result-value" id="gst-total">$0.00</div>
+          <div class="result-box">
+            <div class="result-label">Total Amount</div>
+            <div class="result-value" id="gst-total">—</div>
+            <div class="result-row">
+              <span class="result-row-label">GST component</span>
+              <span class="result-row-value" id="gst-tax">—</span>
             </div>
           </div>
-          <p class="formula-note">Add: <code>total = amount × 1.1</code>. Remove: <code>ex-GST = total ÷ 1.1</code>.</p>
         </div>
       </div>
 
-      <!-- Percentage Calculator -->
+      <!-- Percentage -->
       <div class="calc-card">
         <div class="calc-card-head">
           <h3>Percentage Calculator</h3>
@@ -493,8 +444,8 @@
           <div class="result-box">
             <div class="result-label">Result</div>
             <div class="result-value neutral" id="pct-result">—</div>
+            <div class="result-sub" id="pct-formula"></div>
           </div>
-          <p class="formula-note" id="pct-formula">Formula: <code>result = (X / 100) × Y</code></p>
         </div>
       </div>
 
@@ -525,21 +476,18 @@
               <input type="number" id="loan-years" placeholder="5" min="1" max="50" oninput="calcLoan()">
             </div>
           </div>
-          <div class="result-grid">
-            <div class="result-cell">
-              <div class="result-label">Monthly Payment</div>
-              <div class="result-value" id="loan-monthly">$0</div>
+          <div class="result-box">
+            <div class="result-label">Monthly Repayment</div>
+            <div class="result-value" id="loan-monthly">—</div>
+            <div class="result-row">
+              <span class="result-row-label">Total interest</span>
+              <span class="result-row-value" id="loan-interest">—</span>
             </div>
-            <div class="result-cell">
-              <div class="result-label">Total Interest</div>
-              <div class="result-value" style="color:var(--orange)" id="loan-interest">$0</div>
+            <div class="result-row">
+              <span class="result-row-label">Total repaid</span>
+              <span class="result-row-value" id="loan-total">—</span>
             </div>
           </div>
-          <div class="result-box" style="margin-top:0.75rem">
-            <div class="result-label">Total Repaid</div>
-            <div class="result-value neutral" id="loan-total">$0</div>
-          </div>
-          <p class="formula-note">Uses standard amortisation formula: <code>M = P[r(1+r)ⁿ]/[(1+r)ⁿ-1]</code> where r = monthly rate.</p>
         </div>
       </div>
 
@@ -582,21 +530,18 @@
               </select>
             </div>
           </div>
-          <div class="result-grid">
-            <div class="result-cell">
-              <div class="result-label">Final Balance</div>
-              <div class="result-value" id="ci-total">$0</div>
-            </div>
-            <div class="result-cell">
-              <div class="result-label">Interest Earned</div>
-              <div class="result-value" id="ci-earned">$0</div>
+          <div class="result-box">
+            <div class="result-label">Final Balance</div>
+            <div class="result-value" id="ci-total">—</div>
+            <div class="result-row">
+              <span class="result-row-label">Interest earned</span>
+              <span class="result-row-value" id="ci-earned">—</span>
             </div>
           </div>
-          <p class="formula-note">Formula: <code>A = P(1 + r/n)^(nt)</code> where n = compounding periods per year.</p>
         </div>
       </div>
 
-      <!-- Tip Calculator -->
+      <!-- Tip -->
       <div class="calc-card">
         <div class="calc-card-head">
           <h3>Tip Calculator</h3>
@@ -623,24 +568,22 @@
             <label>Split between (people)</label>
             <input type="number" id="tip-people" placeholder="2" min="1" value="1" oninput="calcTip()">
           </div>
-          <div class="result-grid">
-            <div class="result-cell">
-              <div class="result-label">Tip Amount</div>
-              <div class="result-value" id="tip-amount">$0</div>
-            </div>
-            <div class="result-cell">
-              <div class="result-label">Total Bill</div>
-              <div class="result-value neutral" id="tip-total">$0</div>
-            </div>
-          </div>
-          <div class="result-box" style="margin-top:0.75rem">
+          <div class="result-box">
             <div class="result-label">Per Person</div>
-            <div class="result-value" id="tip-per">$0</div>
+            <div class="result-value" id="tip-per">—</div>
+            <div class="result-row">
+              <span class="result-row-label">Tip amount</span>
+              <span class="result-row-value" id="tip-amount">—</span>
+            </div>
+            <div class="result-row">
+              <span class="result-row-label">Total bill</span>
+              <span class="result-row-value" id="tip-total">—</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Discount Calculator -->
+      <!-- Discount -->
       <div class="calc-card">
         <div class="calc-card-head">
           <h3>Discount / Sale Price Calculator</h3>
@@ -670,14 +613,12 @@
               </div>
             </div>
           </div>
-          <div class="result-grid">
-            <div class="result-cell">
-              <div class="result-label">You Save</div>
-              <div class="result-value" id="disc-saving">$0</div>
-            </div>
-            <div class="result-cell">
-              <div class="result-label" id="disc-result-label">Sale Price</div>
-              <div class="result-value neutral" id="disc-result">$0</div>
+          <div class="result-box">
+            <div class="result-label" id="disc-result-label">Sale Price</div>
+            <div class="result-value neutral" id="disc-result">—</div>
+            <div class="result-row">
+              <span class="result-row-label">You save</span>
+              <span class="result-row-value" id="disc-saving">—</span>
             </div>
           </div>
         </div>
@@ -746,11 +687,10 @@
             <div class="result-value neutral" id="bmi-result">—</div>
             <div class="result-sub" id="bmi-category"></div>
           </div>
-          <p class="formula-note">Formula (metric): <code>BMI = weight(kg) ÷ height(m)²</code>. Categories: Underweight &lt;18.5, Normal 18.5–24.9, Overweight 25–29.9, Obese ≥30.</p>
         </div>
       </div>
 
-      <!-- TDEE / Calories -->
+      <!-- TDEE -->
       <div class="calc-card">
         <div class="calc-card-head">
           <h3>Daily Calorie Calculator (TDEE)</h3>
@@ -790,21 +730,18 @@
               <option value="1.9">Very active (athlete / physical job)</option>
             </select>
           </div>
-          <div class="result-grid">
-            <div class="result-cell">
-              <div class="result-label">Maintain Weight</div>
-              <div class="result-value" id="tdee-maintain">—</div>
-            </div>
-            <div class="result-cell">
-              <div class="result-label">Lose 0.5kg/wk</div>
-              <div class="result-value" style="color:var(--orange)" id="tdee-lose">—</div>
+          <div class="result-box">
+            <div class="result-label">Maintain Weight</div>
+            <div class="result-value" id="tdee-maintain">—</div>
+            <div class="result-row">
+              <span class="result-row-label">Lose 0.5 kg/week</span>
+              <span class="result-row-value" id="tdee-lose">—</span>
             </div>
           </div>
-          <p class="formula-note">Mifflin-St Jeor equation × activity multiplier. Individual metabolism varies.</p>
         </div>
       </div>
 
-      <!-- Age Calculator -->
+      <!-- Age -->
       <div class="calc-card">
         <div class="calc-card-head">
           <h3>Age Calculator</h3>
@@ -824,7 +761,6 @@
             <div class="result-value neutral" id="age-result">—</div>
             <div class="result-sub" id="age-sub"></div>
           </div>
-          <p class="formula-note">Enter dates as DD/MM/YYYY, e.g. <code>15/03/1990</code>.</p>
         </div>
       </div>
 
@@ -832,7 +768,7 @@
       <div class="calc-card">
         <div class="calc-card-head">
           <h3>Ideal Body Weight Calculator</h3>
-          <p>Estimate ideal body weight ranges using the Hamwi, Devine, and Robinson formulas. These are guidelines — healthy weight varies by body composition.</p>
+          <p>Estimate ideal body weight ranges using the Hamwi and Devine formulas. These are clinical guidelines — healthy weight varies by body composition.</p>
         </div>
         <div class="calc-body">
           <div class="row-2">
@@ -848,21 +784,18 @@
               </select>
             </div>
           </div>
-          <div class="result-grid">
-            <div class="result-cell">
-              <div class="result-label">Hamwi</div>
-              <div class="result-value neutral" id="ibw-hamwi">—</div>
+          <div class="result-box">
+            <div class="result-label">Hamwi Formula</div>
+            <div class="result-value neutral" id="ibw-hamwi">—</div>
+            <div class="result-row">
+              <span class="result-row-label">Devine formula</span>
+              <span class="result-row-value" id="ibw-devine">—</span>
             </div>
-            <div class="result-cell">
-              <div class="result-label">Devine</div>
-              <div class="result-value neutral" id="ibw-devine">—</div>
+            <div class="result-row">
+              <span class="result-row-label">Healthy BMI range (18.5–24.9)</span>
+              <span class="result-row-value" id="ibw-bmi-range">—</span>
             </div>
           </div>
-          <div class="result-box" style="margin-top:0.75rem">
-            <div class="result-label">Healthy BMI range (18.5–24.9)</div>
-            <div class="result-value neutral" id="ibw-bmi-range">—</div>
-          </div>
-          <p class="formula-note">Hamwi (male): <code>48 + 2.7×(inches above 5ft)</code>. Devine (male): <code>50 + 2.3×(inches above 5ft)</code>. All values in kg.</p>
         </div>
       </div>
 
@@ -880,11 +813,11 @@
     </div>
     <div class="calc-grid">
 
-      <!-- Fraction Calculator -->
+      <!-- Fraction -->
       <div class="calc-card">
         <div class="calc-card-head">
           <h3>Fraction Calculator</h3>
-          <p>Add, subtract, multiply or divide two fractions. Results are automatically simplified to the lowest terms.</p>
+          <p>Add, subtract, multiply or divide two fractions. Results are automatically simplified to their lowest terms.</p>
         </div>
         <div class="calc-body">
           <div class="field">
@@ -916,7 +849,6 @@
             <div class="result-value neutral" id="frac-result">—</div>
             <div class="result-sub" id="frac-decimal"></div>
           </div>
-          <p class="formula-note">Uses Euclidean GCD to reduce: <code>gcd(a,b) = gcd(b, a mod b)</code>.</p>
         </div>
       </div>
 
@@ -924,10 +856,9 @@
       <div class="calc-card">
         <div class="calc-card-head">
           <h3>Quadratic Equation Solver</h3>
-          <p>Solve any quadratic equation of the form ax² + bx + c = 0 using the quadratic formula. Shows real and complex roots.</p>
+          <p>Solve any quadratic equation of the form ax² + bx + c = 0 using the quadratic formula. Shows both real and complex roots.</p>
         </div>
         <div class="calc-body">
-          <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.85rem">Enter coefficients for <strong style="color:var(--text)">ax² + bx + c = 0</strong></p>
           <div class="row-2">
             <div class="field">
               <label>a (x² coefficient)</label>
@@ -947,11 +878,10 @@
             <div class="result-value neutral" id="quad-result">—</div>
             <div class="result-sub" id="quad-discriminant"></div>
           </div>
-          <p class="formula-note">Formula: <code>x = (-b ± √(b²−4ac)) / 2a</code>. Δ = b²−4ac determines the number and type of roots.</p>
         </div>
       </div>
 
-      <!-- Area Calculator -->
+      <!-- Area & Perimeter -->
       <div class="calc-card">
         <div class="calc-card-head">
           <h3>Area &amp; Perimeter Calculator</h3>
@@ -963,26 +893,23 @@
             <select id="area-shape" onchange="renderAreaFields()">
               <option value="circle">Circle</option>
               <option value="rectangle">Rectangle</option>
-              <option value="triangle">Triangle (base & height)</option>
+              <option value="triangle">Triangle (base &amp; height)</option>
               <option value="trapezoid">Trapezoid</option>
             </select>
           </div>
           <div id="area-fields"></div>
-          <div class="result-grid" id="area-result-grid" style="display:none">
-            <div class="result-cell">
-              <div class="result-label">Area</div>
-              <div class="result-value neutral" id="area-result">—</div>
-            </div>
-            <div class="result-cell">
-              <div class="result-label">Perimeter / Circumf.</div>
-              <div class="result-value neutral" id="area-perim">—</div>
+          <div class="result-box" id="area-result-box" style="display:none">
+            <div class="result-label">Area</div>
+            <div class="result-value neutral" id="area-result">—</div>
+            <div class="result-row">
+              <span class="result-row-label">Perimeter / Circumference</span>
+              <span class="result-row-value" id="area-perim">—</span>
             </div>
           </div>
-          <p class="formula-note" id="area-formula"></p>
         </div>
       </div>
 
-      <!-- Power / Exponent -->
+      <!-- Power & Root -->
       <div class="calc-card">
         <div class="calc-card-head">
           <h3>Power &amp; Root Calculator</h3>
@@ -1000,7 +927,7 @@
           </div>
           <div class="row-2">
             <div class="field">
-              <label id="pow-label-b">Base (b)</label>
+              <label>Base (b)</label>
               <input type="number" id="pow-b" placeholder="8" oninput="calcPow()">
             </div>
             <div class="field" id="pow-exp-field">
@@ -1155,7 +1082,6 @@
             <div class="result-label">Result</div>
             <div class="result-value neutral" id="temp-result">—</div>
           </div>
-          <p class="formula-note">Key points: 0°C = 32°F, 100°C = 212°F, −40°C = −40°F (equal point), 0 K = −273.15°C (absolute zero).</p>
         </div>
       </div>
 
@@ -1197,7 +1123,6 @@
             <div class="result-label">Result</div>
             <div class="result-value neutral" id="spd-result">—</div>
           </div>
-          <p class="formula-note">Reference: 1 Mach ≈ 1235 km/h at sea level (sound speed varies with temperature/altitude).</p>
         </div>
       </div>
 
@@ -1243,7 +1168,6 @@
             <div class="result-label">Result</div>
             <div class="result-value neutral" id="data-result">—</div>
           </div>
-          <p class="formula-note">1 KB = 1,024 bytes; 1 MB = 1,024 KB; 1 GB = 1,024 MB (IEC binary standard).</p>
         </div>
       </div>
 
@@ -1356,21 +1280,21 @@ function calcGST() {
 // ── Percentage ──
 function calcPct() {
   const mode = el('pct-mode').value, a = val('pct-a'), b = val('pct-b');
-  let res; let formula = '';
+  let res, formula = '';
   if (mode === 'of') {
     res = (a / 100) * b;
     el('pct-label-a').textContent = 'Percentage (%)'; el('pct-label-b').textContent = 'of Value';
-    el('pct-suffix-a').textContent = '%'; formula = `Formula: (${a} / 100) × ${b} = ${fmt(res)}`;
+    el('pct-suffix-a').textContent = '%'; formula = `(${a} / 100) × ${b} = ${fmt(res)}`;
   } else if (mode === 'what') {
     res = (a / b) * 100;
     el('pct-label-a').textContent = 'Value X'; el('pct-label-b').textContent = 'of Value Y';
-    el('pct-suffix-a').textContent = ''; formula = `Formula: (${a} / ${b}) × 100 = ${fmt(res)}%`;
+    el('pct-suffix-a').textContent = ''; formula = `(${a} / ${b}) × 100 = ${fmt(res)}%`;
   } else {
     res = ((b - a) / Math.abs(a)) * 100;
     el('pct-label-a').textContent = 'Original (X)'; el('pct-label-b').textContent = 'New Value (Y)';
-    el('pct-suffix-a').textContent = ''; formula = `Change: ${fmt(res)}% ${res >= 0 ? 'increase' : 'decrease'}`;
+    el('pct-suffix-a').textContent = ''; formula = `${fmt(res)}% ${res >= 0 ? 'increase' : 'decrease'}`;
   }
-  el('pct-result').textContent = mode === 'what' ? fmt(res) + '%' : (mode === 'change' ? fmt(res) + '%' : '$' + fmt(res) === '$—' ? '—' : fmt(res));
+  el('pct-result').textContent = mode === 'of' ? fmt(res) : fmt(res) + '%';
   el('pct-formula').textContent = formula;
 }
 
@@ -1520,7 +1444,7 @@ function calcQuad() {
   const a = val('quad-a'), b = val('quad-b'), c = val('quad-c');
   if (!a) { el('quad-result').textContent = 'a cannot be 0'; return; }
   const disc = b * b - 4 * a * c;
-  el('quad-discriminant').textContent = `Discriminant (Δ) = ${fmt(disc, 4)}`;
+  el('quad-discriminant').textContent = `Δ = ${fmt(disc, 4)}`;
   if (disc > 0) {
     const x1 = (-b + Math.sqrt(disc)) / (2 * a), x2 = (-b - Math.sqrt(disc)) / (2 * a);
     el('quad-result').textContent = `x₁ = ${fmt(x1, 6).replace(/0+$/, '').replace(/\.$/, '')},  x₂ = ${fmt(x2, 6).replace(/0+$/, '').replace(/\.$/, '')}`;
@@ -1534,27 +1458,26 @@ function calcQuad() {
 
 // ── Area ──
 const areaConfigs = {
-  circle: { fields: [{id:'r', label:'Radius', unit:'units'}], formula: 'Area = πr²,  Circumference = 2πr' },
-  rectangle: { fields: [{id:'rw', label:'Width', unit:'units'}, {id:'rh', label:'Height', unit:'units'}], formula: 'Area = width × height,  Perimeter = 2(w+h)' },
-  triangle: { fields: [{id:'tb', label:'Base', unit:'units'}, {id:'th', label:'Height', unit:'units'}], formula: 'Area = ½ × base × height. Perimeter shown if all three sides known.' },
-  trapezoid: { fields: [{id:'ta', label:'Side a (top)', unit:'units'}, {id:'tbb', label:'Side b (bottom)', unit:'units'}, {id:'tht', label:'Height', unit:'units'}], formula: 'Area = ½ × (a+b) × height' }
+  circle:    { fields: [{id:'r',   label:'Radius'}] },
+  rectangle: { fields: [{id:'rw',  label:'Width'}, {id:'rh',  label:'Height'}] },
+  triangle:  { fields: [{id:'tb',  label:'Base'},  {id:'th',  label:'Height'}] },
+  trapezoid: { fields: [{id:'ta',  label:'Side a (top)'}, {id:'tbb', label:'Side b (bottom)'}, {id:'tht', label:'Height'}] }
 };
 function renderAreaFields() {
-  const shape = el('area-shape').value, cfg = areaConfigs[shape];
+  const cfg = areaConfigs[el('area-shape').value];
   el('area-fields').innerHTML = '<div class="row-2">' + cfg.fields.map(f =>
     `<div class="field"><label>${f.label}</label><input type="number" id="${f.id}" placeholder="0" oninput="calcArea()"></div>`
   ).join('') + '</div>';
-  el('area-formula').textContent = cfg.formula;
-  el('area-result-grid').style.display = 'none';
+  el('area-result-box').style.display = 'none';
 }
 function calcArea() {
   const shape = el('area-shape').value;
   let area = 0, perim = 0;
-  if (shape === 'circle') { const r = val('r'); area = Math.PI * r * r; perim = 2 * Math.PI * r; }
+  if (shape === 'circle')    { const r = val('r'); area = Math.PI * r * r; perim = 2 * Math.PI * r; }
   else if (shape === 'rectangle') { const w = val('rw'), h = val('rh'); area = w * h; perim = 2 * (w + h); }
-  else if (shape === 'triangle') { const b = val('tb'), h = val('th'); area = 0.5 * b * h; perim = 0; }
-  else if (shape === 'trapezoid') { const a = val('ta'), b = val('tbb'), h = val('tht'); area = 0.5 * (a + b) * h; perim = 0; }
-  el('area-result-grid').style.display = 'grid';
+  else if (shape === 'triangle')  { const b = val('tb'), h = val('th'); area = 0.5 * b * h; }
+  else if (shape === 'trapezoid') { const a = val('ta'), b = val('tbb'), h = val('tht'); area = 0.5 * (a + b) * h; }
+  el('area-result-box').style.display = 'block';
   el('area-result').textContent = fmt(area, 4).replace(/0+$/, '').replace(/\.$/, '') + ' units²';
   el('area-perim').textContent = perim > 0 ? fmt(perim, 4).replace(/0+$/, '').replace(/\.$/, '') + ' units' : '—';
 }
