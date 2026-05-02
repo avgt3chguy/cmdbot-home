@@ -458,7 +458,7 @@
               <div class="result-value" id="gst-total">$0.00</div>
             </div>
           </div>
-          <p class="formula-note">GST rate in Australia is 10%. To add: <code>total = amount × 1.1</code>. To remove: <code>ex-GST = total ÷ 1.1</code>.</p>
+          <p class="formula-note">Add: <code>total = amount × 1.1</code>. Remove: <code>ex-GST = total ÷ 1.1</code>.</p>
         </div>
       </div>
 
@@ -800,7 +800,7 @@
               <div class="result-value" style="color:var(--orange)" id="tdee-lose">—</div>
             </div>
           </div>
-          <p class="formula-note">Uses the Mifflin-St Jeor equation × activity multiplier. Results are estimates; individual metabolism varies.</p>
+          <p class="formula-note">Mifflin-St Jeor equation × activity multiplier. Individual metabolism varies.</p>
         </div>
       </div>
 
@@ -824,7 +824,7 @@
             <div class="result-value neutral" id="age-result">—</div>
             <div class="result-sub" id="age-sub"></div>
           </div>
-          <p class="formula-note">Enter dates as DD/MM/YYYY (e.g. 15/03/1990). Days until next birthday are also shown.</p>
+          <p class="formula-note">Enter dates as DD/MM/YYYY, e.g. <code>15/03/1990</code>.</p>
         </div>
       </div>
 
@@ -862,7 +862,7 @@
             <div class="result-label">Healthy BMI range (18.5–24.9)</div>
             <div class="result-value neutral" id="ibw-bmi-range">—</div>
           </div>
-          <p class="formula-note">Hamwi (male): <code>48 + 2.7×(in above 5ft)</code>. All values in kg. These are clinical estimates, not prescriptions.</p>
+          <p class="formula-note">Hamwi (male): <code>48 + 2.7×(inches above 5ft)</code>. Devine (male): <code>50 + 2.3×(inches above 5ft)</code>. All values in kg.</p>
         </div>
       </div>
 
@@ -916,7 +916,7 @@
             <div class="result-value neutral" id="frac-result">—</div>
             <div class="result-sub" id="frac-decimal"></div>
           </div>
-          <p class="formula-note">Results are reduced using the greatest common divisor (GCD).</p>
+          <p class="formula-note">Uses Euclidean GCD to reduce: <code>gcd(a,b) = gcd(b, a mod b)</code>.</p>
         </div>
       </div>
 
@@ -947,7 +947,7 @@
             <div class="result-value neutral" id="quad-result">—</div>
             <div class="result-sub" id="quad-discriminant"></div>
           </div>
-          <p class="formula-note">Formula: <code>x = (-b ± √(b²-4ac)) / 2a</code>. Discriminant &gt;0: two real roots; =0: one root; &lt;0: complex roots.</p>
+          <p class="formula-note">Formula: <code>x = (-b ± √(b²−4ac)) / 2a</code>. Δ = b²−4ac determines the number and type of roots.</p>
         </div>
       </div>
 
